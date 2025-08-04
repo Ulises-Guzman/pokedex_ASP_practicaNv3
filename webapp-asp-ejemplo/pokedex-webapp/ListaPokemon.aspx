@@ -8,7 +8,12 @@
     </div>
     <div class="row">
         <div class="col">
-            <asp:GridView ID="gvPokemon" CssClass="table table-striped table-hover" runat="server"></asp:GridView>
+            <asp:GridView ID="gvPokemon" CssClass="table table-striped table-hover" AutoGenerateColumns="false" runat="server">
+                <Columns>
+                    <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                    <asp:BoundField HeaderText="Tipo" DataField="Tipo.Descripcion" />  <!-- Elemento compuesto-->
+                </Columns>    
+            </asp:GridView>
         </div>
     </div>
 </asp:Content>
