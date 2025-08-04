@@ -41,6 +41,14 @@ namespace negocio
             comando.CommandText = consulta;
         }
 
+        //En SP
+        public void setearProcedimiento(string sp)
+        {
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
+            comando.CommandText = sp;
+        }
+
+
         //Tambien es posible crear una funcion que realice la ejecucion de la lectura
         //ejecucion de la lectura: conexion, abrir la conexion, ejecutar el lector.
         //De esta manera esta encapsulada.

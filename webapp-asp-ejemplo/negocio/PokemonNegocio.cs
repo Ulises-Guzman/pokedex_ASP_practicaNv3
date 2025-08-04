@@ -87,6 +87,67 @@ namespace negocio
             
         }
 
+        public List<Pokemon> ListarConSP()
+        {
+            //Creo una objeto lista tipo Pokemon y un objeto tipo AccesoDatos
+            List<Pokemon> lista = new List<Pokemon>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                //Armo la consulta SQL para que sea dinaminica
+                //string consulta = "SELECT P.Numero, P.Nombre, P.Descripcion, P.UrlImagen, E.Descripcion AS Tipo, D.Descripcion AS Debilidad, P.IdTipo, P.IdDebilidad, P.Id FROM POKEMONS P, ELEMENTOS E, ELEMENTOS D WHERE P.IdTipo = E.Id AND D.Id = P.IdDebilidad AND P.Activo = 1";
+
+                //Realizo el seteo y la ejecucion de la consulta
+                //datos.setearConsulta(consulta);
+
+                //Consulto a traves de un SP
+                datos.setearProcedimiento("storedListar");
+                datos.ejecutarLectura();
+
+                //Modelo la informacion para la dgv
+                while (datos.Lector.Read())
+                {
+                    Pokemon aux = new Pokemon();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Numero = datos.Lector.GetInt32(0);
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+
+                    //Validar para que el lector no lea valores null ** Primera Forma
+                    //if(!(lector.IsDBNull(lector.GetOrdinal("UrlImagen"))))
+                    //    aux.UrlImagen = (string)lector["UrlImagen"];
+
+                    if (!(datos.Lector["UrlImagen"] is DBNull))
+                        aux.UrlImagen = (string)datos.Lector["UrlImagen"];
+
+                    //Entonces*2
+                    //Le creo una instacia
+                    aux.Tipo = new Elemento();
+                    //Agrego el valor de Id al aux.Tipo
+                    aux.Tipo.Id = (int)datos.Lector["IdTipo"];
+                    //El objeto Tipo Elemento no esta instanciado*1
+                    aux.Tipo.Descripcion = (string)datos.Lector["Tipo"];
+
+                    aux.Debilidad = new Elemento();
+                    aux.Debilidad.Id = (int)datos.Lector["IdDebilidad"];
+                    aux.Debilidad.Descripcion = (string)datos.Lector["Debilidad"];
+
+                    //Agrego el objeto Pokemon aux a la lista
+                    lista.Add(aux);
+                }
+
+
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         //Metodo agregar(Pokemon...)
         public void agregar(Pokemon nuevo)
         {
