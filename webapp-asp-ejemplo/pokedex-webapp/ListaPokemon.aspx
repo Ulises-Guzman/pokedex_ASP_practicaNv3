@@ -11,7 +11,7 @@
             <asp:GridView ID="gvPokemon" CssClass="table table-striped table-hover" AutoGenerateColumns="false" runat="server">
                 <Columns>
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                    <asp:BoundField HeaderText="Tipo" DataField="Tipo.Descripcion" />  <!-- Elemento compuesto-->
+                    <asp:BoundField HeaderText="Tipo" DataField="Tipo.Descripcion" />
                 </Columns>    
             </asp:GridView>
         </div>
