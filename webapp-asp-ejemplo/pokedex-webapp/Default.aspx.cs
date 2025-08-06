@@ -18,6 +18,19 @@ namespace pokedex_webapp
             PokemonNegocio negocio = new PokemonNegocio();
             //Le asigno a la property
             ListaPokemon = negocio.ListarConSP();
+
+            //Aqui cargo de datos el repeater
+            if (!IsPostBack)
+            {
+                repRepetidor.DataSource = ListaPokemon;
+                repRepetidor.DataBind();
+            }
+        }
+
+        //Trae el Id de elemento y lo captura a traves del object sender
+        protected void btnEjemplo_Click(object sender, EventArgs e)
+        {
+            string valor = ((Button)(sender)).CommandArgument;
         }
     }
 }
