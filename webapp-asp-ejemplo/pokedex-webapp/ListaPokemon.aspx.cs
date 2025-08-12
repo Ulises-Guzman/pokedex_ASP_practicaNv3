@@ -17,5 +17,26 @@ namespace pokedex_webapp
             gvPokemon.DataSource = negocio.ListarConSP();
             gvPokemon.DataBind();
         }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("FormularioPokemon.aspx");
+        }
+
+        protected void gvPokemon_SelectedIndexChanged(object sender, EventArgs e)
+        {   
+            //Pasa el id del elemento 
+            string id = gvPokemon.SelectedDataKey.Value.ToString();
+            Response.Redirect("FormularioPokemon.aspx?=" + id);
+
+            //4.22
+        }
+
+        protected void gvPokemon_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            //Capturo el PageIndex que viene por valor del parametro GrigViewPageEventArgs
+            gvPokemon.PageIndex = e.NewPageIndex;
+            gvPokemon.DataBind();
+        }
     }
 }

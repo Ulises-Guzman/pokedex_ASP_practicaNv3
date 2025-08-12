@@ -8,12 +8,25 @@
     </div>
     <div class="row">
         <div class="col">
-            <asp:GridView ID="gvPokemon" CssClass="table table-striped table-hover" AutoGenerateColumns="false" runat="server">
+            <asp:GridView
+                ID="gvPokemon" 
+                CssClass="table table-striped table-hover" 
+                AutoGenerateColumns="false" 
+                DataKeyNames="Id"
+                OnSelectedIndexChanged="gvPokemon_SelectedIndexChanged"
+                OnPageIndexChanging="gvPokemon_PageIndexChanging"
+                AllowPaging="true" PageSize="5"
+                runat="server">
                 <Columns>
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                    <asp:BoundField HeaderText="Tipo" DataField="Tipo.Descripcion" />
-                </Columns>    
+                    <asp:BoundField HeaderText="Número" DataField="Numero" />
+                    <asp:BoundField HeaderText="Tipo" Datafield="Tipo.Descripcion" />
+                    <asp:CommandField HeaderText="Acción" ShowSelectButton="true" SelectText="✍" />
+                </Columns>
             </asp:GridView>
+        </div>
+        <div>
+            <asp:Button ID="btnAgregar" CssClass="btn btn-primary" Text="Agregar" OnClick="btnAgregar_Click" runat="server" />
         </div>
     </div>
 </asp:Content>
