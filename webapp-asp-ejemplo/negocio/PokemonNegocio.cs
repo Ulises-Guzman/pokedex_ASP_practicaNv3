@@ -148,6 +148,37 @@ namespace negocio
             }
         }
 
+        public List<Pokemon> ListarNombreConSP()
+        {
+            //Creo una objeto lista tipo Pokemon y un objeto tipo AccesoDatos
+            List<Pokemon> lista = new List<Pokemon>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                //Consulto a traves de un SP
+                datos.setearProcedimiento("NombresPoke");
+                datos.ejecutarLectura();
+
+                //Modelo la informacion para el desplagable
+                while (datos.Lector.Read())
+                {
+                    Pokemon aux = new Pokemon();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+
+                    //Agrego el objeto Pokemon aux a la lista
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         //Metodo agregar(Pokemon...)
         public void agregar(Pokemon nuevo)
         {

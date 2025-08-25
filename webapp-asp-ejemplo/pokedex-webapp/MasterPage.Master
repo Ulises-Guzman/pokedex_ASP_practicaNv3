@@ -24,6 +24,8 @@
                     <div class="navbar-nav">
                         <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
                         <a class="nav-link" href="ListaPokemon.aspx">Lista de Pokemon's</a>
+                        <a class="nav-link" href="DropDownList-Ejemplos.aspx">Ejemplos de DropDownList</a>
+                        <a class="nav-link" href="UpdatePanel-Ejemplo.aspx">Ejemplos con UpdatePanel</a>
                     </div>
                 </div>
             </div>

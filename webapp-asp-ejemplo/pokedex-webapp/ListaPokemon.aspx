@@ -9,14 +9,14 @@
     <div class="row">
         <div class="col">
             <asp:GridView
-                ID="gvPokemon" 
-                CssClass="table table-striped table-hover" 
-                AutoGenerateColumns="false" 
-                DataKeyNames="Id"
-                OnSelectedIndexChanged="gvPokemon_SelectedIndexChanged"
-                OnPageIndexChanging="gvPokemon_PageIndexChanging"
-                AllowPaging="true" PageSize="5"
-                runat="server">
+             ID="gvPokemon" 
+             CssClass="table table-striped table-hover" 
+             AutoGenerateColumns="false" 
+             DataKeyNames="Id"
+             OnSelectedIndexChanged="gvPokemon_SelectedIndexChanged"
+             OnPageIndexChanging="gvPokemon_PageIndexChanging"
+             AllowPaging="true" PageSize="5"
+             runat="server">
                 <Columns>
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                     <asp:BoundField HeaderText="Número" DataField="Numero" />

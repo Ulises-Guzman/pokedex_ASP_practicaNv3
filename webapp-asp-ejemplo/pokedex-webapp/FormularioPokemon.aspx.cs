@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,7 +24,7 @@ namespace pokedex_webapp
                 if (Request.QueryString["id"] != null)
                 {   
                     int id = int.Parse(Request.QueryString["id"].ToString());
-
+                    
                     //...
                 }
             }
