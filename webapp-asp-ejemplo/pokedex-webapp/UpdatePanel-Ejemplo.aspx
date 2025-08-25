@@ -28,6 +28,5 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
-    <!-- 21.50min -->
     <hr />
 </asp:Content>

@@ -70,6 +70,7 @@
     <Content Include="Default.aspx" />
     <Content Include="DetallePokemon.aspx" />
     <Content Include="DropDownList-Ejemplos.aspx" />
+    <Content Include="DropDownList-SeleccionElemento.aspx" />
     <Content Include="FormularioPokemon.aspx" />
     <Content Include="Global.asax" />
     <Content Include="ListaPokemon.aspx" />
@@ -97,6 +98,13 @@
     </Compile>
     <Compile Include="DropDownList-Ejemplos.aspx.designer.cs">
       <DependentUpon>DropDownList-Ejemplos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DropDownList-SeleccionElemento.aspx.cs">
+      <DependentUpon>DropDownList-SeleccionElemento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DropDownList-SeleccionElemento.aspx.designer.cs">
+      <DependentUpon>DropDownList-SeleccionElemento.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormularioPokemon.aspx.cs">
       <DependentUpon>FormularioPokemon.aspx</DependentUpon>
