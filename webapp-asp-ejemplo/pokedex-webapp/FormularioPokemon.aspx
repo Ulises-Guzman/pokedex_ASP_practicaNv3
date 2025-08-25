@@ -21,10 +21,7 @@
                     <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
 
-                <div class="mb-3">
-                    <label for="txtDescripcion" class="form-label">Descripción</label>
-                    <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" CssClass="form-control" runat="server"></asp:TextBox>
-                </div>
+
 
                 <div class="mb-3">
                     <label for="ddlTipo" class="form-label">Tipo</label>
@@ -51,6 +48,31 @@
                 </div>
 
             </div>
+        </div>
+        <div class="col-6">
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <div class="mt-3 mb-3 ">
+                        <div class="mb-3">
+                            <label for="txtDescripcion" class="form-label">Descripción</label>
+                            <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" CssClass="form-control" runat="server"></asp:TextBox>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtUrlImagen" class="form-label">url Imagen</label>
+                            <asp:TextBox ID="txtUrlImagen" CssClass="form-control" runat="server"
+                                AutoPostBack="true" OnTextChanged="txtUrlImagen_TextChanged"/>
+                        </div>
+                        <div class="mb-3">
+                            <asp:Image ID="imgUrlImagen" imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXia6hKP5CZMdeV1ti5ayWkDB82w-QFPm8ow&s"
+                                CssClass="form-control"
+                                Width="50%"
+                                runat="server" />
+                            <!-- 3min -->
+                        </div>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </div>
 </asp:Content>
