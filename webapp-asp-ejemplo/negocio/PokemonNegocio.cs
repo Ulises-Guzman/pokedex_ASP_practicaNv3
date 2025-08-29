@@ -1,20 +1,21 @@
-﻿using System;
+﻿//Agregar la libreria/clase: dominio
+using dominio;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-//Agregar la libreria/clase: dominio
-using dominio;
 
 namespace negocio
-{   
+{
     //Clase que contiene los Metodos de Acceso a Datos para los Pokemon
     public class PokemonNegocio
-    {   
+    {
         //Creo Metodo listar()
         public List<Pokemon> listar()
-        {   
+        {
             //Creo el objeto lista tipo Pokemon
             //Creo el objeto SqlConnection
             //Creo el objeto comando para realizar Acciones
@@ -84,7 +85,7 @@ namespace negocio
             }
 
 
-            
+
         }
 
         public List<Pokemon> ListarConSP()
@@ -211,6 +212,40 @@ namespace negocio
             }
         }
 
+        public void agregarConSP(Pokemon nuevo)
+        {
+            //Aqui escribo la logica para que se conecte a la DB
+            //que necesito para conectarme al DB?
+            //Un objeto del tipo AccesoDatos :)
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("storedAltaPokemon");
+                //Llamo a la funcion setearParametro() y le paso el nombre de los parametros del SP y el valor del nuevo elemento
+                datos.setearParametro("@numero", nuevo.Numero);
+                datos.setearParametro("@nombre", nuevo.Nombre);
+                datos.setearParametro("@desc", nuevo.Descripcion);
+                datos.setearParametro("@img", nuevo.UrlImagen);
+                datos.setearParametro("@idTipo", nuevo.Tipo.Id);
+                datos.setearParametro("@idDebilidad", nuevo.Debilidad.Id);
+                //datos.setearParametro("@idEvolucion", null);
+                //Llamo al Metodo que ejecutarAccion() está en AccesoDatos
+                datos.ejecutarAccion();
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         //Metodo modificar(Pokemon...)
         public void modificar(Pokemon poke)
         {
@@ -253,7 +288,7 @@ namespace negocio
             {
 
                 throw ex;
-            }       
+            }
         }
 
         //Metodo Eliminar Logico, recibe un Id
@@ -280,7 +315,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
 
             try
-            {   
+            {
                 //Armo la consulta SQL para que sea dinaminica, al final.
                 string consulta = "SELECT P.Numero, P.Nombre, P.Descripcion, P.UrlImagen, E.Descripcion AS Tipo, D.Descripcion AS Debilidad, P.IdTipo, P.IdDebilidad, P.Id FROM POKEMONS P, ELEMENTOS E, ELEMENTOS D WHERE P.IdTipo = E.Id AND D.Id = P.IdDebilidad AND P.Activo = 1 AND ";
 
