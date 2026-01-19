@@ -27,7 +27,7 @@ namespace pokedex_webapp
         {   
             //Pasa el id del elemento 
             string id = gvPokemon.SelectedDataKey.Value.ToString();
-            Response.Redirect("FormularioPokemon.aspx?=" + id);
+            Response.Redirect("FormularioPokemon.aspx?id=" + id);
         }
 
         protected void gvPokemon_PageIndexChanging(object sender, GridViewPageEventArgs e)

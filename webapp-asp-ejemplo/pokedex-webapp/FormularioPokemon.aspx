@@ -40,12 +40,13 @@
                 <div class="pt-5 d-grid gap-2 d-md-flex justify-content-md-end">
                     <asp:Button ID="btnAceptar" Text="Aceptar" CssClass="btn btn-primary me-md-2" OnClick="btnAceptar_Click" runat="server" />
                     <asp:Button ID="btnModificar" Text="Modificar" CssClass="btn btn-primary me-md-2" OnClick="btnModificar_Click" runat="server" />
-                    <asp:Button ID="btnEliminar" Text="Eliminar" CssClass="btn btn-primary" OnClick="btnEliminar_Click" runat="server" />
+                    <asp:Button ID="btnEliminar" Text="Eliminar" CssClass="btn btn-danger" OnClick="btnEliminar_Click" runat="server" />
+                    <asp:Button ID="btnInactivar" Text="Inactivar" CssClass="btn btn-warning" OnClick="btnInactivar_Click" runat="server" />
                 </div>
 
-                <div class=" mt-3 mb-3 d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a href="ListaPokemon.aspx">Cancelar</a>
-                </div>
+
+
+
 
             </div>
         </div>
@@ -61,10 +62,10 @@
                         <div class="mb-3">
                             <label for="txtUrlImagen" class="form-label">url Imagen</label>
                             <asp:TextBox ID="txtUrlImagen" CssClass="form-control" runat="server"
-                                AutoPostBack="true" OnTextChanged="txtUrlImagen_TextChanged"/>
+                                AutoPostBack="true" OnTextChanged="txtUrlImagen_TextChanged" />
                         </div>
                         <div class="mb-3">
-                            <asp:Image ID="imgUrlImagen" imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXia6hKP5CZMdeV1ti5ayWkDB82w-QFPm8ow&s"
+                            <asp:Image ID="imgUrlImagen" ImageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbt4ZISe4q1wf5oxPp0TsOTqMm3fVvw-QvLGoGqNWOxevAyWplBqVcrbHuqc7IQj5I3d8&usqp=CAU"
                                 CssClass="form-control"
                                 Width="50%"
                                 runat="server" />
@@ -74,5 +75,32 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
+
+        <div class="row">
+            <div class="col-6">
+                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>
+                        <% if (ConfirmaEliminar) %>
+                        <% { %>
+                        <div class="mt-3 mb-3 gap-2 d-md-flex align-items-center justify-content-end">
+                            <asp:CheckBox ID="chkConfirmarEliminacion" runat="server" />
+                            <label for="chkConfirmarEliminacion" class="form-check-label">Confirmar eliminación</label>
+
+                            <asp:Button ID="btnConfirmaEliminacion" Text="Confirmar" CssClass="btn btn-outline-danger" OnClick="btnConfirmaEliminacion_Click" runat="server" />
+                        </div>
+                        <% } %>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class=" mt-3 mb-3 d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="ListaPokemon.aspx">Cancelar</a>
+                </div>
+            </div>
+        </div>
     </div>
+
 </asp:Content>

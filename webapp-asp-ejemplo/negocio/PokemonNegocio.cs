@@ -14,7 +14,7 @@ namespace negocio
     public class PokemonNegocio
     {
         //Creo Metodo listar()
-        public List<Pokemon> listar()
+        public List<Pokemon> listar(string id = "")
         {
             //Creo el objeto lista tipo Pokemon
             //Creo el objeto SqlConnection
@@ -34,9 +34,15 @@ namespace negocio
                 //4-Realizo la lectura
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=POKEDEX_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT P.Numero, P.Nombre, P.Descripcion, P.UrlImagen, E.Descripcion AS Tipo, D.Descripcion AS Debilidad, P.IdTipo, P.IdDebilidad, P.Id FROM POKEMONS P, ELEMENTOS E, ELEMENTOS D WHERE P.IdTipo = E.Id AND D.Id = P.IdDebilidad AND P.Activo = 1";
-                comando.Connection = conexion;
+                comando.CommandText = "SELECT P.Numero, P.Nombre, P.Descripcion, P.UrlImagen, E.Descripcion AS Tipo, D.Descripcion AS Debilidad, P.IdTipo, P.IdDebilidad, P.Id, P.Activo FROM POKEMONS P, ELEMENTOS E, ELEMENTOS D WHERE P.IdTipo = E.Id AND D.Id = P.IdDebilidad ";
+                // Agrego modificación para lsitar por "id", pasado por parámetro
+                if (id != null)
+                {
+                    comando.CommandText += " AND P.Id = " + id;
+                }
 
+                comando.Connection = conexion;
+                
                 conexion.Open();
                 lector = comando.ExecuteReader();
 
@@ -68,6 +74,9 @@ namespace negocio
                     aux.Debilidad = new Elemento();
                     aux.Debilidad.Id = (int)lector["IdDebilidad"];
                     aux.Debilidad.Descripcion = (string)lector["Debilidad"];
+
+                    // Agrego estado
+                    aux.Activo = bool.Parse(lector["Activo"].ToString());
 
                     //Agrego el objeto Pokemon aux a la lista
                     lista.Add(aux);
@@ -133,6 +142,8 @@ namespace negocio
                     aux.Debilidad = new Elemento();
                     aux.Debilidad.Id = (int)datos.Lector["IdDebilidad"];
                     aux.Debilidad.Descripcion = (string)datos.Lector["Debilidad"];
+
+                    aux.Activo = bool.Parse(datos.Lector["Activo"].ToString());
 
                     //Agrego el objeto Pokemon aux a la lista
                     lista.Add(aux);
@@ -292,13 +303,14 @@ namespace negocio
         }
 
         //Metodo Eliminar Logico, recibe un Id
-        public void eliminarLogico(int id)
+        public void eliminarLogico(int id, bool activo)
         {
             try
             {
                 AccesoDatos datos = new AccesoDatos();
-                datos.setearConsulta("UPDATE POKEMONS SET Activo = 0 WHERE Id = @id");
+                datos.setearConsulta("UPDATE POKEMONS SET Activo = @activo WHERE Id = @id");
                 datos.setearParametro("@id", id);
+                datos.setearParametro("@activo", activo);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -438,6 +450,33 @@ namespace negocio
             {
 
                 throw ex;
+            }
+        }
+
+        public void modificarConSP(Pokemon poke)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("storedModificarPokemon");
+                datos.setearParametro("@numero", poke.Numero);
+                datos.setearParametro("@nombre", poke.Nombre);
+                datos.setearParametro("@desc", poke.Descripcion);
+                datos.setearParametro("@img", poke.UrlImagen);
+                datos.setearParametro("@idTipo", poke.Tipo.Id);
+                datos.setearParametro("@idDebilidad", poke.Debilidad.Id);
+                datos.setearParametro("@id", poke.Id);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
     }
