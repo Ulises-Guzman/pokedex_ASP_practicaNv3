@@ -321,15 +321,15 @@ namespace negocio
         }
 
         //Metodo filtrar de la busqueda avanzada
-        public List<Pokemon> filtrar(string campo, string criterio, string filtro)
+        public List<Pokemon> filtrar(string campo, string criterio, string filtro, string estado)
         {   //Creo una objeto lista tipo Pokemon y un objeto tipo AccesoDatos
             List<Pokemon> lista = new List<Pokemon>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                //Armo la consulta SQL para que sea dinaminica, al final.
-                string consulta = "SELECT P.Numero, P.Nombre, P.Descripcion, P.UrlImagen, E.Descripcion AS Tipo, D.Descripcion AS Debilidad, P.IdTipo, P.IdDebilidad, P.Id FROM POKEMONS P, ELEMENTOS E, ELEMENTOS D WHERE P.IdTipo = E.Id AND D.Id = P.IdDebilidad AND P.Activo = 1 AND ";
+                //Armo la consulta SQL para que sea dinaminica, al final. //Modifico la consulta agregandole P.Activo
+                string consulta = "SELECT P.Numero, P.Nombre, P.Descripcion, P.UrlImagen, E.Descripcion AS Tipo, D.Descripcion AS Debilidad, P.IdTipo, P.IdDebilidad, P.Id, P.Activo FROM POKEMONS P, ELEMENTOS E, ELEMENTOS D WHERE P.IdTipo = E.Id AND D.Id = P.IdDebilidad AND ";
 
                 //En el caso con if y switches
 
@@ -364,19 +364,30 @@ namespace negocio
                     }
                 }
                 else
-                {
+                {   
+                    // Modifico para que filtre por descripcion del Tipo de pokemon. Osea E.Descripcion
                     switch (criterio)
                     {
                         case "Comienza con":
-                            consulta += "P.Descripcion LIKE '" + filtro + "%' ";
+                            consulta += "E.Descripcion LIKE '" + filtro + "%' ";
                             break;
                         case "Termina con":
-                            consulta += "P.Descripcion LIKE '%" + filtro + "' ";
+                            consulta += "E.Descripcion LIKE '%" + filtro + "' ";
                             break;
                         default:
-                            consulta += "P.Descripcion LIKE '%" + filtro + "%' ";
+                            consulta += "E.Descripcion LIKE '%" + filtro + "%' ";
                             break;
                     }
+                }
+
+                // Agrego a la consulta el Estado, leyendo el parametro pasado, que es el Estado.
+                if (estado == "Activo")
+                {
+                    consulta += "AND P.Activo = 1";
+                }
+                else if (estado == "Inactivo")
+                {
+                    consulta += "AND P.Activo = 0";
                 }
 
                 //Realizo el seteo y la ejecucion de la consulta
@@ -410,6 +421,11 @@ namespace negocio
                     aux.Debilidad = new Elemento();
                     aux.Debilidad.Id = (int)datos.Lector["IdDebilidad"];
                     aux.Debilidad.Descripcion = (string)datos.Lector["Debilidad"];
+
+                    //Agrego como propiedad el campo activo. //Forma: casteo explicito.
+                    aux.Activo = (bool)datos.Lector["Activo"];
+                    //otra forma: parseo
+                    //aux.Activo = bool.Parse(datos.Lector["Activo"].ToString());
 
                     //Agrego el objeto Pokemon aux a la lista
                     lista.Add(aux);
