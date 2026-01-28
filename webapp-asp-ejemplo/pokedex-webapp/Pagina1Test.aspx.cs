@@ -7,27 +7,15 @@ using System.Web.UI.WebControls;
 
 namespace pokedex_webapp
 {
-    public partial class MenuLogin : System.Web.UI.Page
+    public partial class Pagina1Test : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // hacer la logica si hay una persona logueada
-            // 26.10miin Video: 2.Login y permisos.
             if (Session["usuario"] == null)
             {
                 Session.Add("error", "Debes iniciar sesión para ingresar...");
                 Response.Redirect("Error.aspx", false);
             }
-        }
-
-        protected void btnPagina1_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Pagina1Test.aspx", false);
-        }
-
-        protected void btnPagina2_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Pagina2Admin.aspx", false);
         }
     }
 }

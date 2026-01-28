@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <!-- CSS Boostrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
@@ -21,14 +21,42 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
-                        <a class="nav-link" href="ListaPokemon.aspx">Lista de Pokemon's</a>
-                        <a class="nav-link" href="DropDownList-Ejemplos.aspx">Ejemplos de DropDownList</a>
-                        <a class="nav-link" href="UpdatePanel-Ejemplo.aspx">Ejemplos con UpdatePanel</a>
-                        <a class="nav-link" href="DropDownList-SeleccionElemento.aspx">Selección de Elementos</a>
-                        <a class="nav-link" href="Login.aspx">Login</a>
-                    </div>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ListaPokemon.aspx">Lista de Pokemon's</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="DropDownList-Ejemplos.aspx">Ejemplos de DropDownList</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="UpdatePanel-Ejemplo.aspx">Ejemplos con UpdatePanel</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="DropDownList-SeleccionElemento.aspx">Selección de Elementos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Login.aspx">Login</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Login
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="Login.aspx">Iniciar sesión</a></li>
+                                <!-- <li><a class="dropdown-item" href="#" role="button">Cerrar sesión</a></li> -->
+                                <li><a class="dropdown-item" href="#">Soporte</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <asp:Button ID="btnCerrarSesion" CssClass="dropdown-item" Text="Cerrar Sesión" OnClick="btnCerrarSesion_Click" runat="server"  />
+                                </li>   
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -37,7 +65,7 @@
             </asp:ContentPlaceHolder>
         </div>
     </form>
-<!-- JS Boostrap CDN-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <!-- JS Boostrap CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 </html>

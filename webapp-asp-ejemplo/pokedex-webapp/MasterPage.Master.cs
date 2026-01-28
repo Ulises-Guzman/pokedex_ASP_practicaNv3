@@ -13,5 +13,13 @@ namespace pokedex_webapp
         {
 
         }
+
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Session.RemoveAll();
+            Response.Redirect("Login.aspx", false);
+        }
     }
 }
