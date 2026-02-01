@@ -71,14 +71,18 @@
     <Content Include="DetallePokemon.aspx" />
     <Content Include="DropDownList-Ejemplos.aspx" />
     <Content Include="DropDownList-SeleccionElemento.aspx" />
+    <Content Include="EnvioEmail.aspx" />
     <Content Include="Error.aspx" />
+    <Content Include="Favoritos.aspx" />
     <Content Include="FormularioPokemon.aspx" />
     <Content Include="Global.asax" />
     <Content Include="ListaPokemon.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MenuLogin.aspx" />
+    <Content Include="MiPerfil.aspx" />
     <Content Include="Pagina1Test.aspx" />
     <Content Include="Pagina2Admin.aspx" />
+    <Content Include="Registro.aspx" />
     <Content Include="UpdatePanel-Ejemplo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -111,12 +115,26 @@
     <Compile Include="DropDownList-SeleccionElemento.aspx.designer.cs">
       <DependentUpon>DropDownList-SeleccionElemento.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EnvioEmail.aspx.cs">
+      <DependentUpon>EnvioEmail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EnvioEmail.aspx.designer.cs">
+      <DependentUpon>EnvioEmail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Favoritos.aspx.cs">
+      <DependentUpon>Favoritos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Favoritos.aspx.designer.cs">
+      <DependentUpon>Favoritos.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormularioPokemon.aspx.cs">
       <DependentUpon>FormularioPokemon.aspx</DependentUpon>
@@ -156,6 +174,13 @@
     <Compile Include="MenuLogin.aspx.designer.cs">
       <DependentUpon>MenuLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MiPerfil.aspx.cs">
+      <DependentUpon>MiPerfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MiPerfil.aspx.designer.cs">
+      <DependentUpon>MiPerfil.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pagina1Test.aspx.cs">
       <DependentUpon>Pagina1Test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -171,6 +196,13 @@
       <DependentUpon>Pagina2Admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registro.aspx.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registro.aspx.designer.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UpdatePanel-Ejemplo.aspx.cs">
       <DependentUpon>UpdatePanel-Ejemplo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

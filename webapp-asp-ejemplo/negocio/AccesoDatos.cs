@@ -92,6 +92,23 @@ namespace negocio
             }
         }
 
+        // Creo una funcion que realiza la consulta de insertar y ademas devuelve un int
+        public int ejecutarAccionScalar()
+        {
+            comando.Connection = conexion;
+
+            try
+            {
+                conexion.Open();
+                return int.Parse(comando.ExecuteScalar().ToString());
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         //Creo una funcion que cierra la conexion.
         //Cierra si esta ejecutado el lector, tanto, si no.
         public void cerrarConexion()

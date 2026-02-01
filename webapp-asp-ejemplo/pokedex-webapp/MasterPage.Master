@@ -21,6 +21,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <%-- collapse navbar-collapse--%>
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
@@ -28,7 +29,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="ListaPokemon.aspx">Lista de Pokemon's</a>
                         </li>
-                        <li class="nav-item">
+                        <%--<li class="nav-item">
                             <a class="nav-link" href="DropDownList-Ejemplos.aspx">Ejemplos de DropDownList</a>
                         </li>
                         <li class="nav-item">
@@ -37,29 +38,47 @@
                         <li class="nav-item">
                             <a class="nav-link" href="DropDownList-SeleccionElemento.aspx">Selección de Elementos</a>
                         </li>
-                        <li class="nav-item">
+                         <li class="nav-item">
                             <a class="nav-link" href="Login.aspx">Login</a>
+                        </li> --%>
+                        <li class="nav-item">
+                            <a class="nav-link" href="EnvioEmail.aspx">Enviar Email</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Favoritos.aspx">Favoritos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="MiPerfil.aspx">Mi Perfil</a>
+                        </li>
+                    </ul>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Login
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown me-3">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                <img
+                                    alt=""
+                                    src="#"
+                                    class="rounded-circle"
+                                    style="width: 32px; height: 32px; object-fit: cover;" />
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="Login.aspx">Iniciar sesión</a></li>
-                                <!-- <li><a class="dropdown-item" href="#" role="button">Cerrar sesión</a></li> -->
+                                <li><a class="dropdown-item" href="Registro.aspx">Registrarse</a></li>
                                 <li><a class="dropdown-item" href="#">Soporte</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li>
-                                    <asp:Button ID="btnCerrarSesion" CssClass="dropdown-item" Text="Cerrar Sesión" OnClick="btnCerrarSesion_Click" runat="server"  />
-                                </li>   
+                                    <asp:Button ID="btnCerrarSesion" CssClass="dropdown-item" Text="Cerrar Sesión" OnClick="btnCerrarSesion_Click" runat="server" />
+                                </li>
                             </ul>
                         </li>
                     </ul>
+
                 </div>
             </div>
         </nav>
+
         <div class="container">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
