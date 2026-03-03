@@ -3,14 +3,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row pt-5 justify-content-center align-items-center">
-        <div class="col-4 bg-body rounded-4">
+    <div class="row" style="height: 100px">
+        <div class="col-lg"></div>
+    </div>
+    <div class="row justify-content-center align-items-center" style="height: 300px">
+        <div class="col-lg-4 bg-body rounded-4">
         <h4 class="mt-5 mb-3 ms-3 me-3">Por favor, inicie sesión</h4>
             <div class="mb-3 ms-3 me-3">
                 <asp:TextBox
-                    ID="txtUsuario"
+                    ID="txtEmail"
                     CssClass="form-control"
-                    PlaceHolder="Nombre de usuario..."
+                    PlaceHolder="ejemplo@ejemplo.com"
                     runat="server">
                 </asp:TextBox>
             </div>
@@ -27,6 +30,8 @@
                 <asp:Button ID="btnIniciarSesion" CssClass="mb-5 ms-3 me-3 btn btn-primary we" style="width: 91%;" Text="Iniciar sesión" OnClick="btnIniciarSesion_Click" runat="server" />
             </div>
         </div>
-
+        <div class="row" style="height: 100px">
+            <div class="col-lg"></div>
+        </div>
     </div>
 </asp:Content>

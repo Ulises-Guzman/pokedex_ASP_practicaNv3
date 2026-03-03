@@ -13,7 +13,14 @@ namespace pokedex_webapp
     public partial class ListaPokemon : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {   
+            // manejo la seguridad
+            if (!Seguridad.esAdmin(Session["trainee"]))
+            {
+                Session.Add("error", "Se requiere permisos de admin para acceder a esta pantalla...");
+                Response.Redirect("Error.aspx", false);
+            }
+
             PokemonNegocio negocio = new PokemonNegocio();
             Session.Add("listaPokemons", negocio.ListarConSP());
             gvPokemon.DataSource = Session["listaPokemons"];

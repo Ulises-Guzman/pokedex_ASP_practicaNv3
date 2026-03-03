@@ -24,6 +24,19 @@ namespace pokedex_webapp
             {
                 repRepetidor.DataSource = ListaPokemon;
                 repRepetidor.DataBind();
+
+                // validacion imagen avatar
+                
+                if (Seguridad.sessionActiva(Session["trainee"]))
+                {
+                    Trainee user = (Trainee)Session["trainee"];
+                    Image imagenAvatar = (Image)Master.FindControl("imgAvatar");
+                    imagenAvatar.ImageUrl = "~/Images/" + user.ImagenPerfil;
+                    Image usuarioAvatar = (Image)Master.FindControl("imgAvatar");
+                    usuarioAvatar.ToolTip = user.Email;
+                    //imgAvatar.ToolTip = user.Email;
+                    
+                }
             }
         }
 

@@ -31,8 +31,10 @@ namespace pokedex_webapp
 
                 user.Email = txtEmail.Text;
                 user.Pass = txtContrasena.Text;
-
-                int id = traineeNegocio.InsertarNuevo(user);
+                // Modificacmos y completamos el objeto con el id
+                //int id = traineeNegocio.InsertarNuevo(user);
+                user.Id = traineeNegocio.InsertarNuevo(user);
+                Session.Add("trainee", user); // queda la session cargada y abierta, quedando asi definido el registro con auto login
 
                 emailService.ArmarCorreo(user.Email, "Bienvenida Trainee" ,"Hola te damos la bienvenida a la WepApp...");
                 emailService.EnviarEmail();

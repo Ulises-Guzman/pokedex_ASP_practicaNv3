@@ -29,6 +29,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="ListaPokemon.aspx">Lista de Pokemon's</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Favoritos.aspx">Favoritos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="MiPerfil.aspx">Mi Perfil</a>
+                        </li>
                         <%--<li class="nav-item">
                             <a class="nav-link" href="DropDownList-Ejemplos.aspx">Ejemplos de DropDownList</a>
                         </li>
@@ -40,37 +46,52 @@
                         </li>
                          <li class="nav-item">
                             <a class="nav-link" href="Login.aspx">Login</a>
-                        </li> --%>
+                        </li> 
                         <li class="nav-item">
                             <a class="nav-link" href="EnvioEmail.aspx">Enviar Email</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Favoritos.aspx">Favoritos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="MiPerfil.aspx">Mi Perfil</a>
-                        </li>
+                        </li> --%>
                     </ul>
 
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown me-3">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-                                <img
+                                <%--<img
                                     alt=""
-                                    src="#"
+                                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
                                     class="rounded-circle"
-                                    style="width: 32px; height: 32px; object-fit: cover;" />
+                                    style="width: 32px; height: 32px; object-fit: cover;" />--%>
+
+                                    <asp:Image 
+                                        ID="imgAvatar" 
+                                        CssClass="rounded-circle" 
+                                        style="width: 32px; height: 32px; object-fit: cover" 
+                                        ToolTip=""
+                                        ImageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                                        runat="server"
+                                    />
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="Login.aspx">Iniciar sesión</a></li>
-                                <li><a class="dropdown-item" href="Registro.aspx">Registrarse</a></li>
-                                <li><a class="dropdown-item" href="#">Soporte</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <asp:Button ID="btnCerrarSesion" CssClass="dropdown-item" Text="Cerrar Sesión" OnClick="btnCerrarSesion_Click" runat="server" />
-                                </li>
+                                <% if (!negocio.Seguridad.sessionActiva(Session["trainee"]))%>
+                                <% { %>
+                                        <li><a class="dropdown-item" href="Login.aspx">Iniciar sesión</a></li>
+                                        <li><a class="dropdown-item" href="Registro.aspx">Registrarse</a></li>
+                                        <li><a class="dropdown-item" href="#">Soporte</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                <% } %>
+                                <% else %>
+                                <% { %>
+                                        <li><a class="dropdown-item disabled" href="Login.aspx">Iniciar sesión</a></li>
+                                        <li><a class="dropdown-item disabled" href="Registro.aspx">Registrarse</a></li>
+                                        <li><a class="dropdown-item" href="#">Soporte</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li>
+                                            <asp:Button ID="btnCerrarSesion" CssClass="dropdown-item" Text="Cerrar Sesión" OnClick="btnCerrarSesion_Click" runat="server" />
+                                        </li>
+                                <% } %>
                             </ul>
                         </li>
                     </ul>

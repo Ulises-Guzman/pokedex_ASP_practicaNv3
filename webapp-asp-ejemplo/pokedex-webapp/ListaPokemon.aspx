@@ -5,6 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="mb-3">
         <h1>Lista de Pokemon's</h1>
+        <hr />
         <div class="row">
             <div class="col-4">
                 <%--<div class="mt-3 mb-3">
