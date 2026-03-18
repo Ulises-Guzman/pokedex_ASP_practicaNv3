@@ -76,6 +76,8 @@
     <Content Include="Favoritos.aspx" />
     <Content Include="FormularioPokemon.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="JS\Alerts.js" />
+    <Content Include="JS\ValidacionMiPerfil.js" />
     <Content Include="ListaPokemon.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MenuLogin.aspx" />

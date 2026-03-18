@@ -49,6 +49,21 @@
     <h1>Mi Perfil</h1>
     <hr />
     <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                <div id="alertaSatisfactoria" class="alert alert-success alert-dismissible fade show" role="alert" visible="false" runat="server">
+                    Los datos han sido guardados!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <div id="alertaNoSatisfactoria" class="alert alert-danger alert-dismissible fade show" role="alert" visible="false" runat="server">
+                    Los datos No fueron guardados!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
         <!-- aqui deberia usar la clase needs-validation y la propiedad novalidate -->
         <div class="col-md-1"></div>
         <div class="col-md-4">
@@ -60,14 +75,14 @@
                 <label for="txtNombre" class="form-label">Nombre</label>
                 <asp:TextBox ID="txtNombre" ClientIDMode="Static" CssClass="form-control" runat="server"></asp:TextBox>
                 <div class="invalid-feedback">Por favor, ingresa un nombre.</div>
-                <div class="valid-feedback">!Se ve bien!</div>
+                <div class="valid-feedback">¡Se ve bien!</div>
                 <%--<asp:RequiredFieldValidator CssClass="validacion" ErrorMessage="Campo requerido" ControlToValidate="txtNombre" runat="server" />--%>
             </div>
             <div class="mb-3">
                 <label for="txtApellido" class="form-label">Apellido</label>
                 <asp:TextBox ID="txtApellido" ClientIDMode="Static" CssClass="form-control" runat="server"></asp:TextBox>
                 <div class="invalid-feedback">Por favor, ingrese un apellido.</div>
-                <div class="valid-feedback">!Se ve bien!</div>
+                <div class="valid-feedback">¡Se ve bien!</div>
                 <%--<asp:RequiredFieldValidator CssClass="validacion"  ControlToValidate="txtApellido" ErrorMessage="Campo requerido" runat="server" />--%>
                 <%--<asp:RangeValidator CssClass="validacion" ErrorMessage="Valor fuera de rango" ControlToValidate="txtApellido" Type="Integer" MinimumValue="1" MaximumValue="10" runat="server" />--%>
                 <%--<asp:RegularExpressionValidator CssClass="validacion" ErrorMessage="Ingrese solo números" ControlToValidate="txtApellido" ValidationExpression="^[0-9]+$" runat="server" />--%>
@@ -75,7 +90,9 @@
             </div>
             <div class="mb-3">
                 <label for="txtFechaNac" class="form-label">Fecha de nacimiento</label>
-                <asp:TextBox ID="txtFechaNac" CssClass="form-control" TextMode="Date" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtFechaNac" ClientIDMode="Static" CssClass="form-control" TextMode="Date" runat="server"></asp:TextBox>
+                <div class="invalid-feedback">Por favor, ingrese una fecha.</div>
+                <div class="valid-feedback">¡Se ve bien!</div>
             </div>
             <div class="mb-3">
                 <asp:Button ID="btnGuardar" CssClass="btn btn-primary me-2" Text="Guardar" OnClientClick="return validar()" OnClick="btnGuardar_Click" runat="server" />
@@ -95,7 +112,7 @@
         <div class="col-md-2"></div>
     </div>
 
-    <script>
+    <%--<script>
         // Refactoring //
         'use strict'
 
@@ -132,5 +149,9 @@
             }
             return true;
         }
-    </script>
+    </script>--%>
+
+    <script src="/JS/ValidacionMiPerfil.js"></script>
+    <script src="/JS/Alerts.js"></script>
+
 </asp:Content>

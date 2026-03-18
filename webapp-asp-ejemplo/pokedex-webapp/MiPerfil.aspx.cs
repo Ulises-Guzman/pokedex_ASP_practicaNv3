@@ -76,7 +76,6 @@ namespace pokedex_webapp
                 user.Nombre = txtNombre.Text;
                 user.Apellido = txtApellido.Text;
                 user.FechaNacimiento = DateTime.Parse(txtFechaNac.Text);
-                // falta completar la fecha al objeto
 
                 negocio.actualizar(user);
 
@@ -87,9 +86,12 @@ namespace pokedex_webapp
 
                 //Image imgImagenPerfil = (Image)Master.FindControl("imgImagenPerfil");
                 imgImagenPerfil.ImageUrl = "~/Images/" + user.ImagenPerfil;
+
+                alertaSatisfactoria.Visible = true;
             }
             catch (Exception ex)
             {
+                alertaNoSatisfactoria.Visible = true;
                 Session.Add("error", ex.ToString());
             }
         }
